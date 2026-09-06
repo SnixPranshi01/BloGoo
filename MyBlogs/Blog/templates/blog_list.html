@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Blog{% endblock %}
+
+{% block header %}
+            <h1 class="text-light text-center">Welcome to BloGoo!!</h1>
+{% endblock %}
+{% block content %}
+    <div class="container row gap-3">
+        {% for blog in blogs %}
+        <div class="card" style="width: 18rem;">
+            {% if blog.photo %}
+            <img src="{{ blog.photo.url }}" class="card-img-top" alt="Blog image">
+            {% endif %}
+            <div class="card-body">
+            <h5 class="card-title">{{blog.user.username}}</h5>
+            <p class="card-text">{{blog.text}}</p>
+            {% if show_actions and user.is_authenticated and blog.user == user %}
+            <a href="{% url 'blog_edit' blog.id %}" class="btn btn-primary">Edit Blog</a>
+            <a href="{% url 'blog_delete' blog.id %}" class="btn btn-danger">Delete Blog</a>
+            {% endif %}
+
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

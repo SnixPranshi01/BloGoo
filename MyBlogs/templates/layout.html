@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>
+        {% block title %}MyBlogs{% endblock %}
+    </title>
+    
+</head>
+<body>
+
+  {% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary">
+    <div class="container d-flex align-items-center justify-content-left ms-0 ">
+      <div class="d-flex align-items-center">
+        <a class="navbar-brand fw-bold me-4" href="{% url 'home' %}">BloGoo</a>
+        <ul class="navbar-nav flex-row gap-3 mb-0">
+          <li class="nav-item">
+            <a class="nav-link active fw-semibold" aria-current="page" href="{% url 'home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="{% url 'blog_list' %}">MyBlogs</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-link text-light text-decoration-none px-2" href="{% url 'login_html' %}">Sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-light btn-sm rounded-pill px-3 " href="{% url 'register' %}?next={% url 'blog_create' %}">Create Blog</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="d-flex ms-auto">
+        <form class="d-flex align-items-center  gap-2" role="search" >
+          <input class="form-control form-control-sm  bg-dark text-light border-secondary" type="search" placeholder="Search..." aria-label="Search">
+          <button class="btn btn-outline-light btn-sm" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  {% endblock %}
+
+  {% block header %}
+  {% endblock %}
+  <div class="container text-center">
+  {% block content %}
+  <p>Hello, Bloggers</p>
+  {% endblock %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  
+</body>
+</html>

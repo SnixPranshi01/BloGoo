@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Create Blog{% endblock %}
+
+{% block header %}
+            <h1 class="text-light text-center">BloGoo</h1>
+{% endblock %}
+{% block content %}
+    <p >Welcome to  blog!</p>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Create Blog</button>
+    </form>
+{% endblock %}

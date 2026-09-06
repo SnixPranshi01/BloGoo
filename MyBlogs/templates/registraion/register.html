@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Create Account{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+	<div class="col-md-6 col-lg-5">
+		<h1 class="mb-4">Create Account</h1>
+		<form method="post">
+			{% csrf_token %}
+			<input type="hidden" name="next" value="{{ next }}">
+			{{ form.as_p }}
+			<button type="submit" class="btn btn-light">Create Account</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
